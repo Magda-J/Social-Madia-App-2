@@ -51,11 +51,11 @@ export default function Home() {
       <div className='bg-gradient-to-tl from-sky-500 to-gray-300 fon'>
 
       <div>
-        <h1 className='text-4xl font-bold text-center'>InstaMovie</h1>
-        <Link href='/add'>Watch movies</Link>
+        <h1 className='text-4xl pt-5 text-center'>Movies Reviews For You!</h1>
+   
       </div>
 
-      <div className='p-4 w-full h-full justify-center flex-col'>
+      <div className='p-4 h-full w-full'>
 
         {newPosts && newPosts.map((newPost) => {
 

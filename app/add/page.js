@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import Link from 'next/link';
+
 import { useState, useEffect } from 'react';
 import StarRating from '@/components/StarRating';
 
@@ -12,6 +14,7 @@ const Page = () => {
     const [isSuccess, setIsSuccess] = useState(false)
     const [isError, setIsError] = useState(false)
     const [rating, setRating] = useState(0)
+
 
 
 
@@ -29,7 +32,7 @@ const Page = () => {
       setIsError(true);
       setTimeout(() => {
         setIsError(false);
-      }, 3000);
+      }, 7000);
       return;
     }
 
@@ -38,7 +41,7 @@ const Page = () => {
 
     setTimeout(() => {
       setIsSuccess(false);
-    }, 3000);
+    }, 7000);
 
     setPostObject({
       title: '',
@@ -69,20 +72,22 @@ const Page = () => {
                     className='text-2xl font-bold text-black-500'>Submit A Review!</h1>
             </div>
 
-            {isError && (<p className='text-red-500'>Please fill in all fields</p>)}
+            {isError && (<p className='text-red-500'>Please fill in all fields!</p>)}
             
             {isSuccess && (
               
-              <div className='absolute bg-gray-300 p-4 m-4' style={{
+              <div className='absolute border bg-gray-300 p-4 m-4' style={{
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 zIndex: 1000,
             }}>
                 <p className='flex items-center justify-center text-black p-6 mx-auto'>You have succesfully Submitted the form.</p>
-                <div className='flex items-center justify-evenly flex-row'>
-                    <button className=''>Ok</button>
-                    <button href="">View Review</button></div>
+                <div className='flex items-center justify-center flex-row'>
+                
+                    <Link href='/' className='flex bg-blue-400 p-1 text-white rounded-md bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80flex-center ml-4'>View Reviews</Link>                    
+                    
+                    </div>
 
                 </div>
 
@@ -137,7 +142,7 @@ const Page = () => {
                 />
                 </div>
 
-                <button type='submit' className='bg-blue-500 w-1/4 mx-auto flex  text-white p-2 rounded-md'
+                <button type='submit' className='bg-blue-500 mx-auto flex text-white p-4 rounded-md bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80'
                 // disabled={isError}
                 >Submit Review</button>
             </form>
