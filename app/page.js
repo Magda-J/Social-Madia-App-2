@@ -3,9 +3,7 @@ import MediaCard from '@/components/MediaCard';
 
 import { useState, useEffect } from 'react';
 
-import Link from 'next/link';
 
-import Page from './add/page';
 
 
 
@@ -36,43 +34,34 @@ export default function Home() {
     })
 
   }, [])
-
-
-
-
-
-
-
+  
 
 
   return (
     <>
     
-      <div className='bg-gradient-to-tl from-sky-500 to-gray-300 fon'>
+      <div className='bg-gradient-to-tl from-black to-gray-900 fon'>
 
       <div>
-        <h1 className='text-4xl pt-5 text-center'>Movies Reviews For You!</h1>
+        <h1 className='text-4xl pt-5 text-white text-center'>Movies Reviews For You!</h1>
    
       </div>
 
-      <div className='p-4 h-full w-full'>
+      <div className='p-4 h-full w-full'> {/* added this to change the position fo the cards */}
 
         {newPosts && newPosts.map((newPost) => {
 
-          return <MediaCard
+          return ( <MediaCard
             username={newPost.username}
             title={newPost.title}
-            descripttion={newPost.description}
+            description={newPost.description}
             img={newPost.img}
-            review={newPost.review}>
-
-
-          </MediaCard>
+            review={newPost.review}
+            rating={newPost.rating}>
+          </MediaCard> )
         })}
 
-        {/* <button onClick={increaseLikes}>Like!</button>
-        <button onClick={decreaseLikes}>UnLike!</button>
-        <h2>{likeCount}</h2> */}
+  
 
       </div>
 
@@ -85,20 +74,4 @@ export default function Home() {
 
 
 
-// {movies && movies.map((movie) => {
-//   return <MediaCard title={movie.title}
-//       img={movie.img}
-//       watched={movie.watched}
-//       opinion={movie.opinion}
-//   />
-
-
-// // 1st thing I changed
-// useEffect(() => {
-//   // get movies from local storage
-//   const movies = JSON.parse(localStorage.getItem('movies'));
-//   // if there are no movies, do nothing and return
-//   if (!movies) return;
-//   // if there are movies, set them in state
-//   setMovies(movies);
-// }, [])
+ 
