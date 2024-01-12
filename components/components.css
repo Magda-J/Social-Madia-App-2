@@ -1,3 +1,17 @@
 .dv-star-rating-star {
     font-size: 2.5rem !important;
 }
+
+.heart-icon {
+    stroke-width: 1px;
+    
+}
+
+
+
+.star-red { fill: #8B0000; stroke: #8B0000; }
+.star-orange { fill: #eea00f; stroke: #FFA500; }
+.star-yellow { fill: #FFFF00; stroke: #FFFF00; }
+.star-yellowgreen { fill: #9ACD32; stroke: #9ACD32; }
+.star-green { fill: #008000; stroke: #008000; }
+.star-default { fill: #ccc; stroke: #ccc; }

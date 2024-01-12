@@ -25,6 +25,10 @@ const Page = () => {
     });
   };
 
+  const handleRatingChange = (newRating) => {
+    setPostObject(prev => ({ ...prev, rating: newRating }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -35,6 +39,9 @@ const Page = () => {
       }, 7000);
       return;
     }
+
+
+    
 
     setNewPost(postObject);
     setIsSuccess(true);
@@ -49,8 +56,16 @@ const Page = () => {
       review: '',
       img: '',
       description: '',
+      rating: 0,
+  
     });
+
+
   };
+
+//   useEffect(() => {
+//     setPostObject(prev => ({...prev, rating}));
+//   }, [rating])
 
   useEffect(() => {
     if (Object.keys(newPost).length > 0) {
@@ -61,6 +76,8 @@ const Page = () => {
       localStorage.setItem('posts', JSON.stringify(updatedPosts));
     }
   }, [newPost]);
+
+
 
 
     return (
@@ -99,24 +116,30 @@ const Page = () => {
             >
                 <p>Username: 
                 <input placeholder=' Username' name="username"
-                    className='ml-1 rounded-sm'
+                    className='p-0.5 mr-1 rounded-sm'
                     onChange={handleInputChange}
                     value={postObject.username} /></p>
 
-                <p>Movie Title:
+                <p className=''>Movie Title: 
                 <input placeholder=' Movie Title' name="title"
-                    className='ml-1 rounded-sm'
+                    className='p-0.5 rounded-sm'
                     onChange={handleInputChange}
                     value={postObject.title}
                 /></p>
 
                 <div className='flex flex-col'>
-                <p>Movie Description:</p>
+                <p >Movie Description:</p>
                 <textarea placeholder=' Write a Description!' name="description"
-                    className='rounded-sm'
+                    className='rounded-sm p-2'
                     onChange={handleInputChange}
                     value={postObject.description}
+                    maxLength ={200}
                 />
+                <p className='text-sm text-gray-600'>
+                    {200 - (postObject.description ? postObject.description.length : 0)} characters remaining.
+                </p>
+
+
                 </div>
 
                 <p>Movie Image: 
@@ -127,19 +150,29 @@ const Page = () => {
                 /></p>
 
                 <p>How would you rate this Movie?</p>
-                <StarRating 
-                value={postObject.rating}
+                <StarRating
+                name="rating"
+                onChange={handleInputChange}
+                rating={postObject.rating}
+                setRating = {handleRatingChange}
+                size={28}
                
-                rating={rating} setRating={setRating} />
+             />
 
                
                 <div className='flex flex-col'>
                 <p>Give the movie a review:</p>
                 <textarea placeholder=' Write a Review!' name="review"
-                    className='rounded-sm'
+                    className='rounded-sm p-2'
                     onChange={handleInputChange}
                     value={postObject.review}
+                    maxLength={500}
+                  
                 />
+                <p className='text-sm text-gray-600'>
+                    {500 - (postObject.review ? postObject.review.length : 0)} characters remaining.
+                </p>
+ 
                 </div>
 
                 <button type='submit' className='bg-blue-500 mx-auto flex text-white p-4 rounded-md bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80'
